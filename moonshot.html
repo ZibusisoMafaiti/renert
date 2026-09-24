@@ -1,15 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
-</head>
-<body>
-<x-dc>
-<helmet>
 <meta name="robots" content="noindex">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>My moonshot · Zibusiso Mafaiti</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,74 +17,83 @@
   :focus-visible { outline: 2px solid #ff7a2f; outline-offset: 3px; }
   @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
   @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; animation: none !important; } }
+  .h0:hover { color:#ff7a2f !important; }
+  .h1:hover { background:#050608 !important; color:#ff7a2f !important; }
+  [data-part] .pt { border: 1.5px solid #4b5462; background: transparent; }
+  [data-state="past"] .pt { border-color: #ff7a2f; background: rgba(255,122,47,0.22); }
+  [data-state="on"] .pt { border-color: #ff7a2f; background: #ff7a2f; }
+  .sd { background: #262c36; }
+  [data-state="on"] .sd, [data-state="past"] .sd, .sd[data-state="on"], .sd[data-state="past"] { background: #ff7a2f; }
+  .lbl { display: none; }
+  [data-state="on"] .lbl { display: block; }
+  .pair { grid-template-columns: minmax(0,1fr); }
+  @media (min-width: 900px) { .pair { grid-template-columns: minmax(0,1fr) 28px minmax(0,1fr); } }
+  @media (max-width: 899.98px) { .d-only { display: none !important; } }
+  @media (min-width: 900px) { .m-only { display: none !important; } }
 </style>
-</helmet>
-
+</head>
+<body>
 <div style="background:#07090d;color:#e8e6e1;font-family:'Newsreader',Georgia,serif;overflow-x:hidden">
 
-  <sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}">
-    <nav aria-label="Altitude" style="position:fixed;left:clamp(14px,2vw,30px);top:50%;transform:translateY(-50%);z-index:20;display:flex;flex-direction:column;align-items:center;gap:3px">
-      <button type="button" onClick="{{ go.moon }}" aria-label="Moon" title="Moon" aria-current="{{ cur.moon }}" style="position:relative;background:none;border:0;padding:4px 10px;cursor:pointer;display:flex">
-        <span style="width:18px;height:18px;border-radius:50%;border:1.5px solid {{ c.moon.bd }};background:{{ c.moon.bg }};transition:background .3s,border-color .3s"></span>
-        <span style="position:absolute;left:100%;top:50%;transform:translateY(-50%);font-family:'IBM Plex Mono',monospace;font-size:12px;color:#ff7a2f;white-space:nowrap;display:{{ c.moon.lbl }}">Moon</span>
+  <nav aria-label="Altitude" class="d-only" style="position:fixed;left:clamp(14px,2vw,30px);top:50%;transform:translateY(-50%);z-index:20;display:flex;flex-direction:column;align-items:center;gap:3px">
+      <button type="button" data-go="moon" data-part="moon" aria-label="Moon" title="Moon" style="position:relative;background:none;border:0;padding:4px 10px;cursor:pointer;display:flex">
+        <span class="pt" style="width:18px;height:18px;border-radius:50%;transition:background .3s,border-color .3s"></span>
+        <span class="lbl" style="position:absolute;left:100%;top:50%;transform:translateY(-50%);font-family:'IBM Plex Mono',monospace;font-size:12px;color:#ff7a2f;white-space:nowrap">Moon</span>
       </button>
       <span aria-hidden="true" style="height:22px;border-left:1px dashed #2f3743"></span>
-      <button type="button" onClick="{{ go.guidance }}" aria-label="Guidance" title="Guidance" aria-current="{{ cur.guidance }}" style="position:relative;background:none;border:0;padding:3px 10px;cursor:pointer;display:flex">
-        <span style="width:22px;height:7px;border:1.5px solid {{ c.guidance.bd }};background:{{ c.guidance.bg }};transition:background .3s,border-color .3s"></span>
-        <span style="position:absolute;left:100%;top:50%;transform:translateY(-50%);font-family:'IBM Plex Mono',monospace;font-size:12px;color:#ff7a2f;white-space:nowrap;display:{{ c.guidance.lbl }}">Guidance</span>
+      <button type="button" data-go="guidance" data-part="guidance" aria-label="Guidance" title="Guidance" style="position:relative;background:none;border:0;padding:3px 10px;cursor:pointer;display:flex">
+        <span class="pt" style="width:22px;height:7px;transition:background .3s,border-color .3s"></span>
+        <span class="lbl" style="position:absolute;left:100%;top:50%;transform:translateY(-50%);font-family:'IBM Plex Mono',monospace;font-size:12px;color:#ff7a2f;white-space:nowrap">Guidance</span>
       </button>
-      <button type="button" onClick="{{ go.s3 }}" aria-label="Stage 3" title="Stage 3" aria-current="{{ cur.s3 }}" style="position:relative;background:none;border:0;padding:3px 10px;cursor:pointer;display:flex">
-        <span style="width:22px;height:30px;border:1.5px solid {{ c.s3.bd }};background:{{ c.s3.bg }};transition:background .3s,border-color .3s"></span>
-        <span style="position:absolute;left:100%;top:50%;transform:translateY(-50%);font-family:'IBM Plex Mono',monospace;font-size:12px;color:#ff7a2f;white-space:nowrap;display:{{ c.s3.lbl }}">Stage 3</span>
+      <button type="button" data-go="s3" data-part="s3" aria-label="Stage 3" title="Stage 3" style="position:relative;background:none;border:0;padding:3px 10px;cursor:pointer;display:flex">
+        <span class="pt" style="width:22px;height:30px;transition:background .3s,border-color .3s"></span>
+        <span class="lbl" style="position:absolute;left:100%;top:50%;transform:translateY(-50%);font-family:'IBM Plex Mono',monospace;font-size:12px;color:#ff7a2f;white-space:nowrap">Stage 3</span>
       </button>
-      <button type="button" onClick="{{ go.s2 }}" aria-label="Stage 2" title="Stage 2" aria-current="{{ cur.s2 }}" style="position:relative;background:none;border:0;padding:3px 10px;cursor:pointer;display:flex">
-        <span style="width:22px;height:46px;border:1.5px solid {{ c.s2.bd }};background:{{ c.s2.bg }};transition:background .3s,border-color .3s"></span>
-        <span style="position:absolute;left:100%;top:50%;transform:translateY(-50%);font-family:'IBM Plex Mono',monospace;font-size:12px;color:#ff7a2f;white-space:nowrap;display:{{ c.s2.lbl }}">Stage 2</span>
+      <button type="button" data-go="s2" data-part="s2" aria-label="Stage 2" title="Stage 2" style="position:relative;background:none;border:0;padding:3px 10px;cursor:pointer;display:flex">
+        <span class="pt" style="width:22px;height:46px;transition:background .3s,border-color .3s"></span>
+        <span class="lbl" style="position:absolute;left:100%;top:50%;transform:translateY(-50%);font-family:'IBM Plex Mono',monospace;font-size:12px;color:#ff7a2f;white-space:nowrap">Stage 2</span>
       </button>
-      <button type="button" onClick="{{ go.s1 }}" aria-label="Stage 1" title="Stage 1" aria-current="{{ cur.s1 }}" style="position:relative;background:none;border:0;padding:3px 10px;cursor:pointer;display:flex">
-        <span style="width:22px;height:64px;border:1.5px solid {{ c.s1.bd }};background:{{ c.s1.bg }};transition:background .3s,border-color .3s"></span>
-        <span style="position:absolute;left:100%;top:50%;transform:translateY(-50%);font-family:'IBM Plex Mono',monospace;font-size:12px;color:#ff7a2f;white-space:nowrap;display:{{ c.s1.lbl }}">Stage 1</span>
+      <button type="button" data-go="s1" data-part="s1" aria-label="Stage 1" title="Stage 1" style="position:relative;background:none;border:0;padding:3px 10px;cursor:pointer;display:flex">
+        <span class="pt" style="width:22px;height:64px;transition:background .3s,border-color .3s"></span>
+        <span class="lbl" style="position:absolute;left:100%;top:50%;transform:translateY(-50%);font-family:'IBM Plex Mono',monospace;font-size:12px;color:#ff7a2f;white-space:nowrap">Stage 1</span>
       </button>
-      <button type="button" onClick="{{ go.engines }}" aria-label="Engines" title="Engines" aria-current="{{ cur.engines }}" style="position:relative;background:none;border:0;padding:3px 10px;cursor:pointer;display:flex;gap:2px">
-        <span style="width:8px;height:9px;border:1.5px solid {{ c.engines.bd }};background:{{ c.engines.bg }};border-radius:0 0 4px 4px;transition:background .3s,border-color .3s"></span>
-        <span style="width:8px;height:9px;border:1.5px solid {{ c.engines.bd }};background:{{ c.engines.bg }};border-radius:0 0 4px 4px;transition:background .3s,border-color .3s"></span>
-        <span style="width:8px;height:9px;border:1.5px solid {{ c.engines.bd }};background:{{ c.engines.bg }};border-radius:0 0 4px 4px;transition:background .3s,border-color .3s"></span>
-        <span style="position:absolute;left:100%;top:50%;transform:translateY(-50%);font-family:'IBM Plex Mono',monospace;font-size:12px;color:#ff7a2f;white-space:nowrap;display:{{ c.engines.lbl }}">Engines</span>
+      <button type="button" data-go="engines" data-part="engines" aria-label="Engines" title="Engines" style="position:relative;background:none;border:0;padding:3px 10px;cursor:pointer;display:flex;gap:2px">
+        <span class="pt" style="width:8px;height:9px;border-radius:0 0 4px 4px;transition:background .3s,border-color .3s"></span>
+        <span class="pt" style="width:8px;height:9px;border-radius:0 0 4px 4px;transition:background .3s,border-color .3s"></span>
+        <span class="pt" style="width:8px;height:9px;border-radius:0 0 4px 4px;transition:background .3s,border-color .3s"></span>
+        <span class="lbl" style="position:absolute;left:100%;top:50%;transform:translateY(-50%);font-family:'IBM Plex Mono',monospace;font-size:12px;color:#ff7a2f;white-space:nowrap">Engines</span>
       </button>
-      <button type="button" onClick="{{ go.pad }}" aria-label="Pad" title="Pad" aria-current="{{ cur.pad }}" style="position:relative;background:none;border:0;padding:6px 4px;cursor:pointer;display:flex">
-        <span style="width:44px;height:4px;background:{{ c.pad.solid }};transition:background .3s"></span>
-        <span style="position:absolute;left:100%;top:50%;transform:translateY(-50%);font-family:'IBM Plex Mono',monospace;font-size:12px;color:#ff7a2f;white-space:nowrap;display:{{ c.pad.lbl }};padding-left:6px">Pad</span>
+      <button type="button" data-go="pad" data-part="pad" aria-label="Pad" title="Pad" style="position:relative;background:none;border:0;padding:6px 4px;cursor:pointer;display:flex">
+        <span class="sd" style="width:44px;height:4px;transition:background .3s"></span>
+        <span class="lbl" style="position:absolute;left:100%;top:50%;transform:translateY(-50%);font-family:'IBM Plex Mono',monospace;font-size:12px;color:#ff7a2f;white-space:nowrap;padding-left:6px">Pad</span>
       </button>
     </nav>
-  </sc-if>
 
-  <sc-if value="{{ mobile }}" hint-placeholder-val="{{ false }}">
-    <div role="progressbar" aria-label="Altitude" aria-valuemin="0" aria-valuemax="7" aria-valuenow="{{ climbed }}" style="position:fixed;top:0;left:0;right:0;height:4px;z-index:20;display:flex;gap:2px;background:#07090d">
-      <span style="flex:1;background:{{ c.pad.solid }}"></span>
-      <span style="flex:1;background:{{ c.engines.solid }}"></span>
-      <span style="flex:1;background:{{ c.s1.solid }}"></span>
-      <span style="flex:1;background:{{ c.s2.solid }}"></span>
-      <span style="flex:1;background:{{ c.s3.solid }}"></span>
-      <span style="flex:1;background:{{ c.guidance.solid }}"></span>
-      <span style="flex:1;background:{{ c.moon.solid }}"></span>
+  <div id="alt-bar" class="m-only" role="progressbar" aria-label="Altitude" aria-valuemin="0" aria-valuemax="7" aria-valuenow="0" style="position:fixed;top:0;left:0;right:0;height:4px;z-index:20;display:flex;gap:2px;background:#07090d">
+      <span class="sd" data-part="pad" style="flex:1"></span>
+      <span class="sd" data-part="engines" style="flex:1"></span>
+      <span class="sd" data-part="s1" style="flex:1"></span>
+      <span class="sd" data-part="s2" style="flex:1"></span>
+      <span class="sd" data-part="s3" style="flex:1"></span>
+      <span class="sd" data-part="guidance" style="flex:1"></span>
+      <span class="sd" data-part="moon" style="flex:1"></span>
     </div>
-  </sc-if>
 
   <section data-screen-label="Opening" style="position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden">
-    <img src="assets/h1.jpg" alt="My LEGO Saturn V, taken apart into its stages and laid out on a diagonal" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 40%"></img>
+    <img src="assets/h1.jpg" alt="My LEGO Saturn V, taken apart into its stages and laid out on a diagonal" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 40%">
     <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,9,13,0.9) 0%,rgba(7,9,13,0.3) 32%,rgba(7,9,13,0.95) 100%)"></div>
     <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(7,9,13,0.95) 0%,rgba(7,9,13,0.78) 40%,rgba(7,9,13,0.2) 75%,rgba(7,9,13,0) 100%)"></div>
     <header style="position:absolute;top:0;left:0;right:0;padding:24px clamp(20px,5vw,56px) 0 clamp(20px,9vw,120px);display:flex;flex-wrap:wrap;gap:12px 28px;align-items:baseline;justify-content:space-between">
       <a href="index.html" style="font-family:'Archivo',sans-serif;font-weight:800;font-size:17px;letter-spacing:0.12em;text-transform:uppercase;color:#f5f3ef">Zibusiso Mafaiti</a>
       <nav aria-label="Pages" style="display:flex;gap:22px;white-space:nowrap;font-family:'IBM Plex Mono',monospace;font-size:13px">
-        <a href="index.html" style="color:#cfd3da" style-hover="color:#ff7a2f">About me</a>
+        <a class="h0" href="index.html" style="color:#cfd3da">About me</a>
         <a href="moonshot.html" aria-current="page" style="color:#ff7a2f">My moonshot</a>
       </nav>
     </header>
     <div style="position:relative;padding:130px clamp(20px,5vw,56px) clamp(56px,9vh,100px) clamp(20px,9vw,120px);max-width:1200px">
       <h1 style="font-family:'Newsreader',Georgia,serif;font-weight:300;font-size:clamp(40px,6.4vw,88px);line-height:1.02;letter-spacing:-0.025em;margin:0 0 28px;max-width:13ch;text-wrap:balance;color:#f5f3ef">I believe in moonshots. This is mine.</h1>
       <p style="font-size:clamp(18px,1.7vw,23px);line-height:1.5;color:#d3d6dc;margin:0;max-width:42ch;text-wrap:pretty">Every Renert student leaving school knowing where they shine, and how they can contribute.</p>
-      <button type="button" onClick="{{ go.pad }}" style="display:inline-flex;align-items:center;gap:16px;margin-top:40px;padding:0;background:none;border:0;cursor:pointer;font-family:'IBM Plex Mono',monospace;font-size:14px;color:#f5f3ef" style-hover="color:#ff7a2f">
+      <button class="h0" type="button" data-go="pad" style="display:inline-flex;align-items:center;gap:16px;margin-top:40px;padding:0;background:none;border:0;cursor:pointer;font-family:'IBM Plex Mono',monospace;font-size:14px;color:#f5f3ef">
         <span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;border:1px solid #ff7a2f;border-radius:50%;color:#ff7a2f;font-size:20px">↓</span>
         <span>Start at the launch pad</span>
       </button>
@@ -146,7 +149,7 @@
       </section>
 
       <section id="engines" tabindex="-1" data-screen-label="Engines" style="border-top:1px dashed #2f3743;padding:clamp(72px,12vh,130px) 0;outline:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:clamp(32px,5vw,72px);align-items:start">
-        <img src="assets/s1.jpg" alt="The first stage of my LEGO Saturn V, showing its F-1 engine bells and fins" style="width:100%;max-width:460px;aspect-ratio:700/787;object-fit:cover;display:block"></img>
+        <img src="assets/s1.jpg" alt="The first stage of my LEGO Saturn V, showing its F-1 engine bells and fins" style="width:100%;max-width:460px;aspect-ratio:700/787;object-fit:cover;display:block">
         <div style="min-width:0">
           <p style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#ff7a2f;margin:0 0 14px">The engines</p>
           <h2 style="font-family:'Newsreader',Georgia,serif;font-weight:300;font-size:clamp(30px,3.6vw,48px);line-height:1.1;margin:0 0 22px;max-width:18ch;text-wrap:balance;color:#f5f3ef">Your people.</h2>
@@ -204,11 +207,11 @@
             </div>
           </div>
         </div>
-        <img src="assets/s2.jpg" alt="The second stage of my LEGO Saturn V, lifted away from the first" style="width:100%;max-width:460px;aspect-ratio:700/644;object-fit:cover;display:block;justify-self:end"></img>
+        <img src="assets/s2.jpg" alt="The second stage of my LEGO Saturn V, lifted away from the first" style="width:100%;max-width:460px;aspect-ratio:700/644;object-fit:cover;display:block;justify-self:end">
       </section>
 
       <section id="s2" tabindex="-1" data-screen-label="Stage 2" style="border-top:1px dashed #2f3743;padding:clamp(72px,12vh,130px) 0;outline:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:clamp(32px,5vw,72px);align-items:center">
-        <img src="assets/s3.jpg" alt="The third stage and instrument ring of my LEGO Saturn V, with its adapter panels opened" style="width:100%;max-width:460px;aspect-ratio:700/583;object-fit:cover;display:block"></img>
+        <img src="assets/s3.jpg" alt="The third stage and instrument ring of my LEGO Saturn V, with its adapter panels opened" style="width:100%;max-width:460px;aspect-ratio:700/583;object-fit:cover;display:block">
         <div style="min-width:0">
           <p style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#ff7a2f;margin:0 0 14px">Stage two · Grades 7 to 9</p>
           <h2 style="font-family:'Newsreader',Georgia,serif;font-weight:300;font-size:clamp(30px,3.6vw,48px);line-height:1.1;margin:0 0 24px;color:#f5f3ef">See the pattern.</h2>
@@ -244,24 +247,79 @@
         <p style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#ff7a2f;margin:0 0 14px">Guidance</p>
         <h2 style="font-family:'Newsreader',Georgia,serif;font-weight:300;font-size:clamp(30px,3.6vw,48px);line-height:1.1;margin:0 0 20px;max-width:20ch;text-wrap:balance;color:#f5f3ef">Where it meets your plan.</h2>
         <p style="font-size:clamp(18px,1.6vw,20px);line-height:1.55;color:#d3d6dc;margin:0 0 44px;max-width:50ch">The instrument ring keeps a rocket on course.</p>
-        <sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}">
-          <div style="display:grid;grid-template-columns:minmax(0,1fr) 28px minmax(0,1fr);gap:20px;padding-bottom:12px;font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:#8e96a3">
+        <div class="d-only" style="display:grid;grid-template-columns:minmax(0,1fr) 28px minmax(0,1fr);gap:20px;padding-bottom:12px;font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:#8e96a3">
             <span>Your plan</span><span></span><span>How the moonshot helps</span>
           </div>
-        </sc-if>
         <div style="display:flex;flex-direction:column">
-          <sc-for list="{{ pairs }}" as="p" hint-placeholder-count="8">
-            <div style="display:grid;grid-template-columns:{{ pairCols }};gap:10px 20px;padding:20px 0;border-top:1px solid #1d222b;align-items:baseline">
+          <div class="pair" style="display:grid;gap:10px 20px;padding:20px 0;border-top:1px solid #1d222b;align-items:baseline">
               <div style="min-width:0">
-                <p style="font-size:16.5px;line-height:1.5;color:#a7adb8;margin:0">{{ p.plan }}</p>
-                <sc-if value="{{ p.hasTags }}" hint-placeholder-val="{{ true }}">
-                  <span style="display:inline-block;margin-top:8px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#8e96a3;border:1px solid #2f3743;padding:3px 8px">{{ p.tags }}</span>
-                </sc-if>
+                <p style="font-size:16.5px;line-height:1.5;color:#a7adb8;margin:0">Programming and extracurriculars offering choice, personalization, flexibility and enrichment</p>
+                <span style="display:inline-block;margin-top:8px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#8e96a3;border:1px solid #2f3743;padding:3px 8px">RP1–RP3</span>
               </div>
               <span aria-hidden="true" style="font-family:'IBM Plex Mono',monospace;color:#ff7a2f;font-size:15px">→</span>
-              <p style="font-size:17px;line-height:1.5;color:#f5f3ef;margin:0;min-width:0">{{ p.help }}</p>
+              <p style="font-size:17px;line-height:1.5;color:#f5f3ef;margin:0;min-width:0">A locally developed program where the question is shared but every answer, role and reflection is personal, enriched by real audiences and experts.</p>
             </div>
-          </sc-for>
+          
+            <div class="pair" style="display:grid;gap:10px 20px;padding:20px 0;border-top:1px solid #1d222b;align-items:baseline">
+              <div style="min-width:0">
+                <p style="font-size:16.5px;line-height:1.5;color:#a7adb8;margin:0">Student surveys and homeroom discussions that inform programming and mark progress in appreciation and community</p>
+                <span style="display:inline-block;margin-top:8px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#8e96a3;border:1px solid #2f3743;padding:3px 8px">RP1–RP5</span>
+              </div>
+              <span aria-hidden="true" style="font-family:'IBM Plex Mono',monospace;color:#ff7a2f;font-size:15px">→</span>
+              <p style="font-size:17px;line-height:1.5;color:#f5f3ef;margin:0;min-width:0">Every session ends with a reflection and a teammate appreciation that flows into the homeroom circle: a steady stream of student voice.</p>
+            </div>
+          
+            <div class="pair" style="display:grid;gap:10px 20px;padding:20px 0;border-top:1px solid #1d222b;align-items:baseline">
+              <div style="min-width:0">
+                <p style="font-size:16.5px;line-height:1.5;color:#a7adb8;margin:0">Personalized course programming and career planning through CVS, Strong, interviews and one-to-one meetings</p>
+                <span style="display:inline-block;margin-top:8px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#8e96a3;border:1px solid #2f3743;padding:3px 8px">RP1, RP4</span>
+              </div>
+              <span aria-hidden="true" style="font-family:'IBM Plex Mono',monospace;color:#ff7a2f;font-size:15px">→</span>
+              <p style="font-size:17px;line-height:1.5;color:#f5f3ef;margin:0;min-width:0">A multi-year record of what each student actually did, enjoyed and found hard, to sit beside those assessments.</p>
+            </div>
+          
+            <div class="pair" style="display:grid;gap:10px 20px;padding:20px 0;border-top:1px solid #1d222b;align-items:baseline">
+              <div style="min-width:0">
+                <p style="font-size:16.5px;line-height:1.5;color:#a7adb8;margin:0">Post-secondary trends through alumni surveys, alumni visits and community partners</p>
+                <span style="display:inline-block;margin-top:8px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#8e96a3;border:1px solid #2f3743;padding:3px 8px">RP1, RP2, RP4</span>
+              </div>
+              <span aria-hidden="true" style="font-family:'IBM Plex Mono',monospace;color:#ff7a2f;font-size:15px">→</span>
+              <p style="font-size:17px;line-height:1.5;color:#f5f3ef;margin:0;min-width:0">Alumni and community partners become the experts each question draws on, and what they share about a changing world shapes the next questions.</p>
+            </div>
+          
+            <div class="pair" style="display:grid;gap:10px 20px;padding:20px 0;border-top:1px solid #1d222b;align-items:baseline">
+              <div style="min-width:0">
+                <p style="font-size:16.5px;line-height:1.5;color:#a7adb8;margin:0">Preparing students for post-secondary studies, including admissions and scholarships</p>
+                <span style="display:inline-block;margin-top:8px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#8e96a3;border:1px solid #2f3743;padding:3px 8px">RP1–RP4</span>
+              </div>
+              <span aria-hidden="true" style="font-family:'IBM Plex Mono',monospace;color:#ff7a2f;font-size:15px">→</span>
+              <p style="font-size:17px;line-height:1.5;color:#f5f3ef;margin:0;min-width:0">A portfolio of each student's own role, decisions and impact.</p>
+            </div>
+          
+            <div class="pair" style="display:grid;gap:10px 20px;padding:20px 0;border-top:1px solid #1d222b;align-items:baseline">
+              <div style="min-width:0">
+                <p style="font-size:16.5px;line-height:1.5;color:#a7adb8;margin:0">Developing aptitudes and skills that enhance the school and wider community</p>
+                <span style="display:inline-block;margin-top:8px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#8e96a3;border:1px solid #2f3743;padding:3px 8px">RP2, RP4, RP5</span>
+              </div>
+              <span aria-hidden="true" style="font-family:'IBM Plex Mono',monospace;color:#ff7a2f;font-size:15px">→</span>
+              <p style="font-size:17px;line-height:1.5;color:#f5f3ef;margin:0;min-width:0">Teams answer questions that matter, for real audiences.</p>
+            </div>
+          
+            <div class="pair" style="display:grid;gap:10px 20px;padding:20px 0;border-top:1px solid #1d222b;align-items:baseline">
+              <div style="min-width:0">
+                <p style="font-size:16.5px;line-height:1.5;color:#a7adb8;margin:0">Student-led homework clubs and Choice Friday options that build mentorship and leadership</p>
+              </div>
+              <span aria-hidden="true" style="font-family:'IBM Plex Mono',monospace;color:#ff7a2f;font-size:15px">→</span>
+              <p style="font-size:17px;line-height:1.5;color:#f5f3ef;margin:0;min-width:0">Specialists sharing expertise across teams as a professional role.</p>
+            </div>
+          
+            <div class="pair" style="display:grid;gap:10px 20px;padding:20px 0;border-top:1px solid #1d222b;align-items:baseline">
+              <div style="min-width:0">
+                <p style="font-size:16.5px;line-height:1.5;color:#a7adb8;margin:0">Your community's call for practical life skills, including financial literacy</p>
+              </div>
+              <span aria-hidden="true" style="font-family:'IBM Plex Mono',monospace;color:#ff7a2f;font-size:15px">→</span>
+              <p style="font-size:17px;line-height:1.5;color:#f5f3ef;margin:0;min-width:0">High school companies put budgets, pricing and real customers in students' hands.</p>
+            </div>
         </div>
       </section>
 
@@ -276,75 +334,14 @@
       <blockquote style="margin:0;max-width:30ch;font-family:'Newsreader',Georgia,serif;font-style:italic;font-weight:300;font-size:clamp(24px,2.8vw,36px);line-height:1.3;color:#e8e6e1;text-wrap:pretty">“More than getting into the university of their dreams, students will be able to say who they are, what they're passionate about, where they're strong, what they're still working on, and how they can best contribute to the world.”</blockquote>
       <p style="font-size:clamp(19px,1.8vw,23px);line-height:1.5;color:#f5f3ef;margin:56px 0 0;max-width:40ch;text-wrap:pretty">If this resonates with you, let's talk and shape the first stage together.</p>
       <div style="display:flex;flex-wrap:wrap;gap:14px 28px;align-items:center;margin-top:32px">
-        <a href="mailto:zmafaiti@gmail.com" style="display:inline-flex;align-items:center;gap:14px;padding:17px 28px;background:#ff7a2f;color:#07090d;font-family:'Archivo',sans-serif;font-weight:800;font-size:14px;letter-spacing:0.06em;border:1px solid #ff7a2f" style-hover="background:#050608;color:#ff7a2f">zmafaiti@gmail.com</a>
-        <a href="index.html" style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#cfd3da" style-hover="color:#ff7a2f">About me</a>
+        <a class="h1" href="mailto:zmafaiti@gmail.com" style="display:inline-flex;align-items:center;gap:14px;padding:17px 28px;background:#ff7a2f;color:#07090d;font-family:'Archivo',sans-serif;font-weight:800;font-size:14px;letter-spacing:0.06em;border:1px solid #ff7a2f">zmafaiti@gmail.com</a>
+        <a class="h0" href="index.html" style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#cfd3da">About me</a>
       </div>
       <p style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#6f7a8a;margin:80px 0 0">Zibusiso Mafaiti · Prepared for Renert School · 25 September 2026</p>
     </div>
   </section>
 
 </div>
-</x-dc>
-<script type="text/x-dc" data-dc-script>
-const ORDER = ["pad", "engines", "s1", "s2", "s3", "guidance", "moon"];
-const PAIRS = [
-  { plan: "Programming and extracurriculars offering choice, personalization, flexibility and enrichment", tags: "RP1–RP3", help: "A locally developed program where the question is shared but every answer, role and reflection is personal, enriched by real audiences and experts." },
-  { plan: "Student surveys and homeroom discussions that inform programming and mark progress in appreciation and community", tags: "RP1–RP5", help: "Every session ends with a reflection and a teammate appreciation that flows into the homeroom circle: a steady stream of student voice." },
-  { plan: "Personalized course programming and career planning through CVS, Strong, interviews and one-to-one meetings", tags: "RP1, RP4", help: "A multi-year record of what each student actually did, enjoyed and found hard, to sit beside those assessments." },
-  { plan: "Post-secondary trends through alumni surveys, alumni visits and community partners", tags: "RP1, RP2, RP4", help: "Alumni and community partners become the experts each question draws on, and what they share about a changing world shapes the next questions." },
-  { plan: "Preparing students for post-secondary studies, including admissions and scholarships", tags: "RP1–RP4", help: "A portfolio of each student's own role, decisions and impact." },
-  { plan: "Developing aptitudes and skills that enhance the school and wider community", tags: "RP2, RP4, RP5", help: "Teams answer questions that matter, for real audiences." },
-  { plan: "Student-led homework clubs and Choice Friday options that build mentorship and leadership", tags: "", help: "Specialists sharing expertise across teams as a professional role." },
-  { plan: "Your community's call for practical life skills, including financial literacy", tags: "", help: "High school companies put budgets, pricing and real customers in students' hands." }
-].map(p => ({ ...p, hasTags: !!p.tags }));
-
-class Component extends DCLogic {
-  state = { active: -1, w: typeof window !== "undefined" ? window.innerWidth : 1280 };
-  componentDidMount() {
-    this.onScroll = () => {
-      const line = window.innerHeight * 0.45;
-      let a = -1;
-      ORDER.forEach((id, i) => { const el = document.getElementById(id); if (el && el.getBoundingClientRect().top < line) a = i; });
-      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) a = ORDER.length - 1;
-      if (a !== this.state.active) this.setState({ active: a });
-    };
-    this.onResize = () => { this.setState({ w: window.innerWidth }); this.onScroll(); };
-    window.addEventListener("scroll", this.onScroll, { passive: true });
-    window.addEventListener("resize", this.onResize);
-    this.onScroll();
-  }
-  componentWillUnmount() {
-    window.removeEventListener("scroll", this.onScroll);
-    window.removeEventListener("resize", this.onResize);
-  }
-  jump(id) {
-    const el = document.getElementById(id);
-    if (!el) return;
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 8, behavior: reduce ? "auto" : "smooth" });
-    el.focus({ preventScroll: true });
-  }
-  renderVals() {
-    const a = this.state.active, desktop = this.state.w >= 900;
-    const c = {}, go = {}, cur = {};
-    ORDER.forEach((id, i) => {
-      const on = i === a, past = i < a;
-      c[id] = {
-        bg: on ? "#ff7a2f" : past ? "rgba(255,122,47,0.22)" : "transparent",
-        bd: on || past ? "#ff7a2f" : "#4b5462",
-        solid: on || past ? "#ff7a2f" : "#262c36",
-        lbl: on ? "block" : "none"
-      };
-      go[id] = () => this.jump(id);
-      cur[id] = on ? "step" : undefined;
-    });
-    return {
-      desktop, mobile: !desktop, c, go, cur, climbed: a + 1,
-      pairs: PAIRS,
-      pairCols: desktop ? "minmax(0,1fr) 28px minmax(0,1fr)" : "minmax(0,1fr)"
-    };
-  }
-}
-</script>
+<script src="site.js"></script>
 </body>
 </html>
