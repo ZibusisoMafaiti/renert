@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My moonshot · Zibusiso Mafaiti</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  html, body { margin: 0; padding: 0; background: #07090d; }
+  * { box-sizing: border-box; }
+  a { color: #ff7a2f; text-decoration: none; }
+  a:hover { color: #ffb066; }
+  ::selection { background: #ff7a2f; color: #07090d; }
+  :focus-visible { outline: 2px solid #ff7a2f; outline-offset: 3px; }
+  @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; animation: none !important; } }
+</style>
+</helmet>
+
+<div style="background:#07090d;color:#e8e6e1;font-family:'Newsreader',Georgia,serif;overflow-x:hidden">
+
+  <sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}">
+    <nav aria-label="Altitude" style="position:fixed;left:clamp(14px,2vw,30px);top:50%;transform:translateY(-50%);z-index:20;display:flex;flex-direction:column;align-items:center;gap:3px">
+      <button type="button" onClick="{{ go.moon }}" aria-label="Moon" title="Moon" aria-current="{{ cur.moon }}" style="position:relative;background:none;border:0;padding:4px 10px;cursor:pointer;display:flex">
+        <span style="width:18px;height:18px;border-radius:50%;border:1.5px solid {{ c.moon.bd }};background:{{ c.moon.bg }};transition:background .3s,border-color .3s"></span>
+        <span style="position:absolute;left:100%;top:50%;transform:translateY(-50%);font-family:'IBM Plex Mono',monospace;font-size:12px;color:#ff7a2f;white-space:nowrap;display:{{ c.moon.lbl }}">Moon</span>
+      </button>
+      <span aria-hidden="true" style="height:22px;border-left:1px dashed #2f3743"></span>
+      <button type="button" onClick="{{ go.guidance }}" aria-label="Guidance" title="Guidance" aria-current="{{ cur.guidance }}" style="position:relative;background:none;border:0;padding:3px 10px;cursor:pointer;display:flex">
+        <span style="width:22px;height:7px;border:1.5px solid {{ c.guidance.bd }};background:{{ c.guidance.bg }};transition:background .3s,border-color .3s"></span>
+        <span style="position:absolute;left:100%;top:50%;transform:translateY(-50%);font-family:'IBM Plex Mono',monospace;font-size:12px;color:#ff7a2f;white-space:nowrap;display:{{ c.guidance.lbl }}">Guidance</span>
+      </button>
+      <button type="button" onClick="{{ go.s3 }}" aria-label="Stage 3" title="Stage 3" aria-current="{{ cur.s3 }}" style="position:relative;background:none;border:0;padding:3px 10px;cursor:pointer;display:flex">
+        <span style="width:22px;height:30px;border:1.5px solid {{ c.s3.bd }};background:{{ c.s3.bg }};transition:background .3s,border-color .3s"></span>
+        <span style="position:absolute;left:100%;top:50%;transform:translateY(-50%);font-family:'IBM Plex Mono',monospace;font-size:12px;color:#ff7a2f;white-space:nowrap;display:{{ c.s3.lbl }}">Stage 3</span>
+      </button>
+      <button type="button" onClick="{{ go.s2 }}" aria-label="Stage 2" title="Stage 2" aria-current="{{ cur.s2 }}" style="position:relative;background:none;border:0;padding:3px 10px;cursor:pointer;display:flex">
+        <span style="width:22px;height:46px;border:1.5px solid {{ c.s2.bd }};background:{{ c.s2.bg }};transition:background .3s,border-color .3s"></span>
+        <span style="position:absolute;left:100%;top:50%;transform:translateY(-50%);font-family:'IBM Plex Mono',monospace;font-size:12px;color:#ff7a2f;white-space:nowrap;display:{{ c.s2.lbl }}">Stage 2</span>
+      </button>
+      <button type="button" onClick="{{ go.s1 }}" aria-label="Stage 1" title="Stage 1" aria-current="{{ cur.s1 }}" style="position:relative;background:none;border:0;padding:3px 10px;cursor:pointer;display:flex">
+        <span style="width:22px;height:64px;border:1.5px solid {{ c.s1.bd }};background:{{ c.s1.bg }};transition:background .3s,border-color .3s"></span>
+        <span style="position:absolute;left:100%;top:50%;transform:translateY(-50%);font-family:'IBM Plex Mono',monospace;font-size:12px;color:#ff7a2f;white-space:nowrap;display:{{ c.s1.lbl }}">Stage 1</span>
+      </button>
+      <button type="button" onClick="{{ go.engines }}" aria-label="Engines" title="Engines" aria-current="{{ cur.engines }}" style="position:relative;background:none;border:0;padding:3px 10px;cursor:pointer;display:flex;gap:2px">
+        <span style="width:8px;height:9px;border:1.5px solid {{ c.engines.bd }};background:{{ c.engines.bg }};border-radius:0 0 4px 4px;transition:background .3s,border-color .3s"></span>
+        <span style="width:8px;height:9px;border:1.5px solid {{ c.engines.bd }};background:{{ c.engines.bg }};border-radius:0 0 4px 4px;transition:background .3s,border-color .3s"></span>
+        <span style="width:8px;height:9px;border:1.5px solid {{ c.engines.bd }};background:{{ c.engines.bg }};border-radius:0 0 4px 4px;transition:background .3s,border-color .3s"></span>
+        <span style="position:absolute;left:100%;top:50%;transform:translateY(-50%);font-family:'IBM Plex Mono',monospace;font-size:12px;color:#ff7a2f;white-space:nowrap;display:{{ c.engines.lbl }}">Engines</span>
+      </button>
+      <button type="button" onClick="{{ go.pad }}" aria-label="Pad" title="Pad" aria-current="{{ cur.pad }}" style="position:relative;background:none;border:0;padding:6px 4px;cursor:pointer;display:flex">
+        <span style="width:44px;height:4px;background:{{ c.pad.solid }};transition:background .3s"></span>
+        <span style="position:absolute;left:100%;top:50%;transform:translateY(-50%);font-family:'IBM Plex Mono',monospace;font-size:12px;color:#ff7a2f;white-space:nowrap;display:{{ c.pad.lbl }};padding-left:6px">Pad</span>
+      </button>
+    </nav>
+  </sc-if>
+
+  <sc-if value="{{ mobile }}" hint-placeholder-val="{{ false }}">
+    <div role="progressbar" aria-label="Altitude" aria-valuemin="0" aria-valuemax="7" aria-valuenow="{{ climbed }}" style="position:fixed;top:0;left:0;right:0;height:4px;z-index:20;display:flex;gap:2px;background:#07090d">
+      <span style="flex:1;background:{{ c.pad.solid }}"></span>
+      <span style="flex:1;background:{{ c.engines.solid }}"></span>
+      <span style="flex:1;background:{{ c.s1.solid }}"></span>
+      <span style="flex:1;background:{{ c.s2.solid }}"></span>
+      <span style="flex:1;background:{{ c.s3.solid }}"></span>
+      <span style="flex:1;background:{{ c.guidance.solid }}"></span>
+      <span style="flex:1;background:{{ c.moon.solid }}"></span>
+    </div>
+  </sc-if>
+
+  <section data-screen-label="Opening" style="position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden">
+    <img src="assets/h1.jpg" alt="My LEGO Saturn V, taken apart into its stages and laid out on a diagonal" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 40%"></img>
+    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,9,13,0.9) 0%,rgba(7,9,13,0.3) 32%,rgba(7,9,13,0.95) 100%)"></div>
+    <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(7,9,13,0.95) 0%,rgba(7,9,13,0.78) 40%,rgba(7,9,13,0.2) 75%,rgba(7,9,13,0) 100%)"></div>
+    <header style="position:absolute;top:0;left:0;right:0;padding:24px clamp(20px,5vw,56px) 0 clamp(20px,9vw,120px);display:flex;flex-wrap:wrap;gap:12px 28px;align-items:baseline;justify-content:space-between">
+      <a href="index.html" style="font-family:'Archivo',sans-serif;font-weight:800;font-size:17px;letter-spacing:0.12em;text-transform:uppercase;color:#f5f3ef">Zibusiso Mafaiti</a>
+      <nav aria-label="Pages" style="display:flex;gap:22px;white-space:nowrap;font-family:'IBM Plex Mono',monospace;font-size:13px">
+        <a href="index.html" style="color:#cfd3da" style-hover="color:#ff7a2f">About me</a>
+        <a href="moonshot.html" aria-current="page" style="color:#ff7a2f">My moonshot</a>
+      </nav>
+    </header>
+    <div style="position:relative;padding:130px clamp(20px,5vw,56px) clamp(56px,9vh,100px) clamp(20px,9vw,120px);max-width:1200px">
+      <h1 style="font-family:'Newsreader',Georgia,serif;font-weight:300;font-size:clamp(40px,6.4vw,88px);line-height:1.02;letter-spacing:-0.025em;margin:0 0 28px;max-width:13ch;text-wrap:balance;color:#f5f3ef">I believe in moonshots. This is mine.</h1>
+      <p style="font-size:clamp(18px,1.7vw,23px);line-height:1.5;color:#d3d6dc;margin:0;max-width:42ch;text-wrap:pretty">Every Renert student leaving school knowing where they shine, and how they can contribute.</p>
+      <button type="button" onClick="{{ go.pad }}" style="display:inline-flex;align-items:center;gap:16px;margin-top:40px;padding:0;background:none;border:0;cursor:pointer;font-family:'IBM Plex Mono',monospace;font-size:14px;color:#f5f3ef" style-hover="color:#ff7a2f">
+        <span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;border:1px solid #ff7a2f;border-radius:50%;color:#ff7a2f;font-size:20px">↓</span>
+        <span>Start at the launch pad</span>
+      </button>
+    </div>
+  </section>
+
+  <div style="padding:0 clamp(20px,5vw,56px) 0 clamp(20px,9vw,120px)">
+    <div style="max-width:1100px;margin:0 auto">
+
+      <section id="pad" tabindex="-1" data-screen-label="Pad" style="padding:clamp(80px,14vh,150px) 0 clamp(64px,10vh,110px);outline:none">
+        <div style="max-width:640px">
+          <p style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#ff7a2f;margin:0 0 22px">A note to Moshe and Aaron</p>
+          <div style="display:flex;flex-direction:column;gap:18px;font-size:clamp(19px,1.8vw,23px);line-height:1.55;color:#d8dadf;font-weight:300">
+            <p style="margin:0;text-wrap:pretty">Reading through your three-year education plan, I was both humbled and excited by where Renert is headed. Your aspirations are refreshing in a world where there is little innovation in primary and secondary education.</p>
+            <p style="margin:0;text-wrap:pretty">I love all five of your pillars, but the one that speaks to my life's purpose is holistic learning. I believe that if this pillar is done right, the others build naturally from it.</p>
+            <p style="margin:0;text-wrap:pretty">What follows is the idea I'd love to build with you. I've left the how for our conversation.</p>
+            <p style="margin:6px 0 0;font-style:italic;color:#9aa1ad">Zibusiso</p>
+          </div>
+        </div>
+
+        <div style="margin-top:clamp(80px,12vh,130px)">
+          <p style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#ff7a2f;margin:0 0 14px">The launch pad</p>
+          <h2 style="font-family:'Newsreader',Georgia,serif;font-weight:300;font-size:clamp(30px,3.6vw,48px);line-height:1.1;margin:0 0 36px;max-width:20ch;text-wrap:balance;color:#f5f3ef">Your five pillars.</h2>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:14px">
+            <div style="border:1px solid #1d222b;background:#0b0e14;padding:22px 20px 24px;display:flex;flex-direction:column;gap:12px">
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#8e96a3">RP1</span>
+              <h3 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:16.5px;line-height:1.3;margin:0;color:#f5f3ef">Nurturing students' interests and passions</h3>
+              <p style="font-size:16px;line-height:1.5;color:#a7adb8;margin:0">Students' own interests and choices guide their learning.</p>
+            </div>
+            <div style="border:1px solid #1d222b;background:#0b0e14;padding:22px 20px 24px;display:flex;flex-direction:column;gap:12px">
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#8e96a3">RP2</span>
+              <h3 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:16.5px;line-height:1.3;margin:0;color:#f5f3ef">Excellence in teaching</h3>
+              <p style="font-size:16px;line-height:1.5;color:#a7adb8;margin:0">Passionate subject specialists and practitioners who model lifelong learning.</p>
+            </div>
+            <div style="border:1px solid #ff7a2f;background:#140f0b;padding:22px 20px 24px;display:flex;flex-direction:column;gap:12px">
+              <span style="display:flex;justify-content:space-between;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#ff7a2f"><span>RP3</span><span>Closest to my purpose</span></span>
+              <h3 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:16.5px;line-height:1.3;margin:0;color:#f5f3ef">Holistic learning</h3>
+              <p style="font-size:16px;line-height:1.5;color:#d3d6dc;margin:0">Balance across academic, physical and artistic life, blurring the line between curricular and extra-curricular.</p>
+            </div>
+            <div style="border:1px solid #1d222b;background:#0b0e14;padding:22px 20px 24px;display:flex;flex-direction:column;gap:12px">
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#8e96a3">RP4</span>
+              <h3 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:16.5px;line-height:1.3;margin:0;color:#f5f3ef">Educating children for a changing future</h3>
+              <p style="font-size:16px;line-height:1.5;color:#a7adb8;margin:0">The ability to self-learn, solve problems, communicate, create and lead.</p>
+            </div>
+            <div style="border:1px solid #1d222b;background:#0b0e14;padding:22px 20px 24px;display:flex;flex-direction:column;gap:12px">
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#8e96a3">RP5</span>
+              <h3 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:16.5px;line-height:1.3;margin:0;color:#f5f3ef">A culture of appreciation</h3>
+              <p style="font-size:16px;line-height:1.5;color:#a7adb8;margin:0">Students explicitly appreciating peers, mentors, families, knowledge and opportunities.</p>
+            </div>
+          </div>
+          <p style="font-size:clamp(18px,1.6vw,21px);line-height:1.55;color:#d3d6dc;margin:40px 0 0;max-width:60ch;text-wrap:pretty">Your motto, Serious Fun, says the most fun in life comes from finding what's deeply meaningful to you and pursuing it without bounds. This moonshot is a way to help every student find it.</p>
+        </div>
+      </section>
+
+      <section id="engines" tabindex="-1" data-screen-label="Engines" style="border-top:1px dashed #2f3743;padding:clamp(72px,12vh,130px) 0;outline:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:clamp(32px,5vw,72px);align-items:start">
+        <img src="assets/s1.jpg" alt="The first stage of my LEGO Saturn V, showing its F-1 engine bells and fins" style="width:100%;max-width:460px;aspect-ratio:700/787;object-fit:cover;display:block"></img>
+        <div style="min-width:0">
+          <p style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#ff7a2f;margin:0 0 14px">The engines</p>
+          <h2 style="font-family:'Newsreader',Georgia,serif;font-weight:300;font-size:clamp(30px,3.6vw,48px);line-height:1.1;margin:0 0 22px;max-width:18ch;text-wrap:balance;color:#f5f3ef">Your people.</h2>
+          <p style="font-size:clamp(18px,1.6vw,21px);line-height:1.55;color:#d3d6dc;margin:0 0 34px;max-width:46ch;text-wrap:pretty">Nothing leaves the pad without thrust, and Renert's comes from its teachers and its community.</p>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:28px 36px">
+            <div>
+              <h3 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:15px;margin:0 0 14px;color:#f5f3ef">Teachers</h3>
+              <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;font-size:16.5px;line-height:1.45;color:#a7adb8">
+                <li>Subject specialists from Kindergarten</li>
+                <li>Staff who share passions beyond their subjects on Choice Friday: 691 options in the past three years</li>
+                <li>Teacher-led professional development in areas of research and passion</li>
+                <li>A Transformative Learning reading group</li>
+              </ul>
+            </div>
+            <div>
+              <h3 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:15px;margin:0 0 14px;color:#f5f3ef">Community</h3>
+              <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;font-size:16.5px;line-height:1.45;color:#a7adb8">
+                <li>Appreciation circles every day from K to 12</li>
+                <li>Student-led homework clubs and Choice Friday options</li>
+                <li>Buddies programming across divisions</li>
+                <li>Celebration of Learning, showcases and portfolios</li>
+                <li>Parents invited into school life</li>
+                <li>Alumni returning to share their university experience</li>
+              </ul>
+            </div>
+          </div>
+          <p style="font-size:clamp(18px,1.6vw,21px);line-height:1.5;color:#f5f3ef;margin:38px 0 0;padding-top:24px;border-top:1px dashed #2f3743;max-width:46ch;text-wrap:pretty">The moonshot doesn't replace any of this. It gives it a shared destination.</p>
+        </div>
+      </section>
+
+      <section id="s1" tabindex="-1" data-screen-label="Stage 1" style="border-top:1px dashed #2f3743;padding:clamp(72px,12vh,130px) 0;outline:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:clamp(32px,5vw,72px);align-items:start">
+        <div style="min-width:0">
+          <p style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#ff7a2f;margin:0 0 14px">Stage one · Grades 3 to 6</p>
+          <h2 style="font-family:'Newsreader',Georgia,serif;font-weight:300;font-size:clamp(30px,3.6vw,48px);line-height:1.1;margin:0 0 24px;color:#f5f3ef">Try every role.</h2>
+          <div style="display:flex;flex-direction:column;gap:16px;font-size:clamp(18px,1.6vw,20px);line-height:1.55;color:#d3d6dc;max-width:52ch">
+            <p style="margin:0;text-wrap:pretty">Each semester, a grade's teachers choose one big question that matters to children that age. Teams answer it by designing and making an artifact, using what they're learning across their subjects, with experts along the way.</p>
+            <p style="margin:0;text-wrap:pretty">Every student holds a role, each built around one of your Pillar 4 skills, and roles rotate through the year.</p>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 24px">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#f5f3ef;border:1px solid #3a4250;padding:7px 12px">Builder</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#f5f3ef;border:1px solid #3a4250;padding:7px 12px">Researcher</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#f5f3ef;border:1px solid #3a4250;padding:7px 12px">Designer</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#f5f3ef;border:1px solid #3a4250;padding:7px 12px">Storyteller</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#f5f3ef;border:1px solid #3a4250;padding:7px 12px">Organizer</span>
+          </div>
+          <p style="font-size:clamp(18px,1.6vw,20px);line-height:1.55;color:#d3d6dc;margin:0;max-width:52ch;text-wrap:pretty">After each session, students note what they enjoyed, what was hard and why, and share one appreciation of a teammate in the homeroom circle.</p>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:24px;margin-top:36px;padding-top:26px;border-top:1px dashed #2f3743">
+            <div>
+              <h3 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:15px;margin:0 0 8px;color:#ff7a2f">Built on Choice Friday</h3>
+              <p style="font-size:16.5px;line-height:1.5;color:#a7adb8;margin:0">The options students already love become starting points, and the staff who run them become experts. Choice Friday itself stays as it is.</p>
+            </div>
+            <div>
+              <h3 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:15px;margin:0 0 8px;color:#ff7a2f">Specialists, not tutors</h3>
+              <p style="font-size:16.5px;line-height:1.5;color:#a7adb8;margin:0">Students who excel in a subject become specialists other teams can call on.</p>
+            </div>
+          </div>
+        </div>
+        <img src="assets/s2.jpg" alt="The second stage of my LEGO Saturn V, lifted away from the first" style="width:100%;max-width:460px;aspect-ratio:700/644;object-fit:cover;display:block;justify-self:end"></img>
+      </section>
+
+      <section id="s2" tabindex="-1" data-screen-label="Stage 2" style="border-top:1px dashed #2f3743;padding:clamp(72px,12vh,130px) 0;outline:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:clamp(32px,5vw,72px);align-items:center">
+        <img src="assets/s3.jpg" alt="The third stage and instrument ring of my LEGO Saturn V, with its adapter panels opened" style="width:100%;max-width:460px;aspect-ratio:700/583;object-fit:cover;display:block"></img>
+        <div style="min-width:0">
+          <p style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#ff7a2f;margin:0 0 14px">Stage two · Grades 7 to 9</p>
+          <h2 style="font-family:'Newsreader',Georgia,serif;font-weight:300;font-size:clamp(30px,3.6vw,48px);line-height:1.1;margin:0 0 24px;color:#f5f3ef">See the pattern.</h2>
+          <div style="display:flex;flex-direction:column;gap:16px;font-size:clamp(18px,1.6vw,20px);line-height:1.55;color:#d3d6dc;max-width:50ch">
+            <p style="margin:0;text-wrap:pretty">Roles deepen into disciplines, and each student's record of roles and reflections keeps growing. A simple app lets students guide themselves through each project and keeps that record.</p>
+            <p style="margin:0;text-wrap:pretty">By Grade 9, students can look back on dozens of real experiences and write a short statement of their strengths and direction.</p>
+            <p style="margin:0;text-wrap:pretty">That record sits beside CVS, Strong and your one-to-one meetings, so the Grade 10 specialization choice is made from experience.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="s3" tabindex="-1" data-screen-label="Stage 3" style="border-top:1px dashed #2f3743;padding:clamp(72px,12vh,130px) 0;outline:none">
+        <p style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#ff7a2f;margin:0 0 14px">Stage three · Grades 10 to 12</p>
+        <h2 style="font-family:'Newsreader',Georgia,serif;font-weight:300;font-size:clamp(30px,3.6vw,48px);line-height:1.1;margin:0 0 28px;color:#f5f3ef">Build a real artifact linked to their learning.</h2>
+        <p style="font-size:clamp(19px,1.8vw,23px);line-height:1.5;color:#e8e6e1;margin:0 0 40px;max-width:52ch;text-wrap:pretty">In Grade 10, each student finds one question big enough for all of high school, drawn from the world they're entering and the specialization they've chosen.</p>
+        <p style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#8e96a3;margin:0 0 14px">Two examples of what students could achieve</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:14px">
+          <div style="border:1px solid #1d222b;background:#0b0e14;padding:clamp(22px,2.4vw,32px)">
+            <h3 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:17px;margin:0 0 12px;color:#f5f3ef">For example, a company</h3>
+            <p style="font-size:17px;line-height:1.55;color:#a7adb8;margin:0">Students whose questions meet can form a group across specializations. If the idea can be commercialized, they build a company and make a product good enough to sell in the real world.</p>
+          </div>
+          <div style="border:1px solid #1d222b;background:#0b0e14;padding:clamp(22px,2.4vw,32px)">
+            <h3 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:17px;margin:0 0 12px;color:#f5f3ef">For example, a mentored inquiry</h3>
+            <p style="font-size:17px;line-height:1.55;color:#a7adb8;margin:0">Others pursue a personal inquiry, such as genomic sequencing for a particular disorder, with a roadmap and experts to guide them.</p>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:16px;margin-top:36px;font-size:clamp(18px,1.6vw,20px);line-height:1.55;color:#d3d6dc;max-width:56ch">
+          <p style="margin:0;text-wrap:pretty">The project doesn't steal time from their daily work. Its demands give them a reason to learn their current material better.</p>
+        </div>
+      </section>
+
+      <section id="guidance" tabindex="-1" data-screen-label="Guidance" style="border-top:1px dashed #2f3743;padding:clamp(72px,12vh,130px) 0;outline:none">
+        <p style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#ff7a2f;margin:0 0 14px">Guidance</p>
+        <h2 style="font-family:'Newsreader',Georgia,serif;font-weight:300;font-size:clamp(30px,3.6vw,48px);line-height:1.1;margin:0 0 20px;max-width:20ch;text-wrap:balance;color:#f5f3ef">Where it meets your plan.</h2>
+        <p style="font-size:clamp(18px,1.6vw,20px);line-height:1.55;color:#d3d6dc;margin:0 0 44px;max-width:50ch">The instrument ring keeps a rocket on course.</p>
+        <sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}">
+          <div style="display:grid;grid-template-columns:minmax(0,1fr) 28px minmax(0,1fr);gap:20px;padding-bottom:12px;font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:#8e96a3">
+            <span>Your plan</span><span></span><span>How the moonshot helps</span>
+          </div>
+        </sc-if>
+        <div style="display:flex;flex-direction:column">
+          <sc-for list="{{ pairs }}" as="p" hint-placeholder-count="8">
+            <div style="display:grid;grid-template-columns:{{ pairCols }};gap:10px 20px;padding:20px 0;border-top:1px solid #1d222b;align-items:baseline">
+              <div style="min-width:0">
+                <p style="font-size:16.5px;line-height:1.5;color:#a7adb8;margin:0">{{ p.plan }}</p>
+                <sc-if value="{{ p.hasTags }}" hint-placeholder-val="{{ true }}">
+                  <span style="display:inline-block;margin-top:8px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#8e96a3;border:1px solid #2f3743;padding:3px 8px">{{ p.tags }}</span>
+                </sc-if>
+              </div>
+              <span aria-hidden="true" style="font-family:'IBM Plex Mono',monospace;color:#ff7a2f;font-size:15px">→</span>
+              <p style="font-size:17px;line-height:1.5;color:#f5f3ef;margin:0;min-width:0">{{ p.help }}</p>
+            </div>
+          </sc-for>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <section id="moon" tabindex="-1" data-screen-label="Moon" style="position:relative;border-top:1px solid #1d222b;background:#050608;padding:clamp(96px,16vh,170px) clamp(20px,5vw,56px) clamp(56px,8vh,90px) clamp(20px,9vw,120px);outline:none;overflow:hidden">
+    <div aria-hidden="true" style="position:absolute;right:clamp(-260px,-12vw,-80px);top:clamp(40px,8vh,90px);width:clamp(280px,42vw,560px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 38% 36%,#2a2d33 0%,#15171b 55%,#0b0c0f 100%);border:1px solid #23262d"></div>
+    <div style="position:relative;max-width:1100px;margin:0 auto">
+      <p style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#ff7a2f;margin:0 0 14px">The Moon</p>
+      <h2 style="font-family:'Newsreader',Georgia,serif;font-weight:300;font-size:clamp(30px,3.6vw,48px);line-height:1.1;margin:0 0 40px;max-width:18ch;text-wrap:balance;color:#f5f3ef">Students who know where they shine.</h2>
+      <blockquote style="margin:0;max-width:30ch;font-family:'Newsreader',Georgia,serif;font-style:italic;font-weight:300;font-size:clamp(24px,2.8vw,36px);line-height:1.3;color:#e8e6e1;text-wrap:pretty">“More than getting into the university of their dreams, students will be able to say who they are, what they're passionate about, where they're strong, what they're still working on, and how they can best contribute to the world.”</blockquote>
+      <p style="font-size:clamp(19px,1.8vw,23px);line-height:1.5;color:#f5f3ef;margin:56px 0 0;max-width:40ch;text-wrap:pretty">If this resonates with you, let's talk and shape the first stage together.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:14px 28px;align-items:center;margin-top:32px">
+        <a href="mailto:zmafaiti@gmail.com" style="display:inline-flex;align-items:center;gap:14px;padding:17px 28px;background:#ff7a2f;color:#07090d;font-family:'Archivo',sans-serif;font-weight:800;font-size:14px;letter-spacing:0.06em;border:1px solid #ff7a2f" style-hover="background:#050608;color:#ff7a2f">zmafaiti@gmail.com</a>
+        <a href="index.html" style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#cfd3da" style-hover="color:#ff7a2f">About me</a>
+      </div>
+      <p style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#6f7a8a;margin:80px 0 0">Zibusiso Mafaiti · Prepared for Renert School · 25 September 2026</p>
+    </div>
+  </section>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const ORDER = ["pad", "engines", "s1", "s2", "s3", "guidance", "moon"];
+const PAIRS = [
+  { plan: "Programming and extracurriculars offering choice, personalization, flexibility and enrichment", tags: "RP1–RP3", help: "A locally developed program where the question is shared but every answer, role and reflection is personal, enriched by real audiences and experts." },
+  { plan: "Student surveys and homeroom discussions that inform programming and mark progress in appreciation and community", tags: "RP1–RP5", help: "Every session ends with a reflection and a teammate appreciation that flows into the homeroom circle: a steady stream of student voice." },
+  { plan: "Personalized course programming and career planning through CVS, Strong, interviews and one-to-one meetings", tags: "RP1, RP4", help: "A multi-year record of what each student actually did, enjoyed and found hard, to sit beside those assessments." },
+  { plan: "Post-secondary trends through alumni surveys, alumni visits and community partners", tags: "RP1, RP2, RP4", help: "Alumni and community partners become the experts each question draws on, and what they share about a changing world shapes the next questions." },
+  { plan: "Preparing students for post-secondary studies, including admissions and scholarships", tags: "RP1–RP4", help: "A portfolio of each student's own role, decisions and impact." },
+  { plan: "Developing aptitudes and skills that enhance the school and wider community", tags: "RP2, RP4, RP5", help: "Teams answer questions that matter, for real audiences." },
+  { plan: "Student-led homework clubs and Choice Friday options that build mentorship and leadership", tags: "", help: "Specialists sharing expertise across teams as a professional role." },
+  { plan: "Your community's call for practical life skills, including financial literacy", tags: "", help: "High school companies put budgets, pricing and real customers in students' hands." }
+].map(p => ({ ...p, hasTags: !!p.tags }));
+
+class Component extends DCLogic {
+  state = { active: -1, w: typeof window !== "undefined" ? window.innerWidth : 1280 };
+  componentDidMount() {
+    this.onScroll = () => {
+      const line = window.innerHeight * 0.45;
+      let a = -1;
+      ORDER.forEach((id, i) => { const el = document.getElementById(id); if (el && el.getBoundingClientRect().top < line) a = i; });
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) a = ORDER.length - 1;
+      if (a !== this.state.active) this.setState({ active: a });
+    };
+    this.onResize = () => { this.setState({ w: window.innerWidth }); this.onScroll(); };
+    window.addEventListener("scroll", this.onScroll, { passive: true });
+    window.addEventListener("resize", this.onResize);
+    this.onScroll();
+  }
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.onScroll);
+    window.removeEventListener("resize", this.onResize);
+  }
+  jump(id) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 8, behavior: reduce ? "auto" : "smooth" });
+    el.focus({ preventScroll: true });
+  }
+  renderVals() {
+    const a = this.state.active, desktop = this.state.w >= 900;
+    const c = {}, go = {}, cur = {};
+    ORDER.forEach((id, i) => {
+      const on = i === a, past = i < a;
+      c[id] = {
+        bg: on ? "#ff7a2f" : past ? "rgba(255,122,47,0.22)" : "transparent",
+        bd: on || past ? "#ff7a2f" : "#4b5462",
+        solid: on || past ? "#ff7a2f" : "#262c36",
+        lbl: on ? "block" : "none"
+      };
+      go[id] = () => this.jump(id);
+      cur[id] = on ? "step" : undefined;
+    });
+    return {
+      desktop, mobile: !desktop, c, go, cur, climbed: a + 1,
+      pairs: PAIRS,
+      pairCols: desktop ? "minmax(0,1fr) 28px minmax(0,1fr)" : "minmax(0,1fr)"
+    };
+  }
+}
+</script>
+</body>
+</html>
