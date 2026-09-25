@@ -23,8 +23,8 @@
   .h1:hover { transform:rotate(30deg) !important; transition:transform .5s; }
   .h2:hover { background:#050608 !important; color:#ff7a2f !important; }
   .h3:hover { border-color:#ff7a2f !important; color:#ff7a2f !important; }
-  @media (max-width: 759.98px) { .d-only { display: none !important; } }
-  @media (min-width: 760px) { .m-only { display: none !important; } }
+  @media (max-width: 640px) { .gear[data-open="4"] { left: 78% !important; } .gear[data-open="5"] { left: 80% !important; } }
+  .gear span:last-child { font-size: clamp(10px,1.35vw,13px); padding: clamp(2px,0.5vw,4px) clamp(5px,1.1vw,10px); }
 </style>
 </head>
 <body>
@@ -49,8 +49,8 @@
       <div aria-hidden="true" style="position:absolute;left:0;right:0;top:0;height:16%;background:linear-gradient(180deg,#07090d 0%,rgba(7,9,13,0) 100%)"></div>
       <div aria-hidden="true" style="position:absolute;left:0;right:0;bottom:0;height:14%;background:linear-gradient(0deg,#07090d 0%,rgba(7,9,13,0) 100%)"></div>
 
-      <button type="button" class="d-only" data-open="0" aria-haspopup="dialog" aria-label="Open Lab" style="position:absolute;left:14%;top:50%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:8px;padding:0;background:none;border:0;cursor:pointer">
-            <span class="h1" style="position:relative;width:clamp(52px,4.6vw,70px);aspect-ratio:1;display:block;filter:drop-shadow(0 4px 14px rgba(0,0,0,0.6))">
+      <button type="button" class="gear" data-open="0" aria-haspopup="dialog" aria-label="Open Lab" style="position:absolute;left:14%;top:50%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:clamp(4px,0.7vw,8px);padding:6px;background:none;border:0;cursor:pointer">
+            <span class="h1" style="position:relative;width:clamp(32px,6vw,70px);aspect-ratio:1;display:block;filter:drop-shadow(0 4px 14px rgba(0,0,0,0.6))">
               <svg viewBox="0 0 64 64" width="100%" height="100%" aria-hidden="true" style="display:block">
                 <circle cx="32" cy="32" r="28" fill="none" stroke="#ff7a2f" stroke-width="7" stroke-dasharray="5.5 5.5"></circle>
                 <circle cx="32" cy="32" r="24" fill="#0b0e14" stroke="#ff7a2f" stroke-width="1.5"></circle>
@@ -62,8 +62,8 @@
             <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#f5f3ef;background:rgba(7,9,13,0.82);padding:4px 10px;white-space:nowrap">Lab</span>
           </button>
         
-          <button type="button" class="d-only" data-open="1" aria-haspopup="dialog" aria-label="Open Classroom" style="position:absolute;left:25%;top:80%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:8px;padding:0;background:none;border:0;cursor:pointer">
-            <span class="h1" style="position:relative;width:clamp(52px,4.6vw,70px);aspect-ratio:1;display:block;filter:drop-shadow(0 4px 14px rgba(0,0,0,0.6))">
+          <button type="button" class="gear" data-open="1" aria-haspopup="dialog" aria-label="Open Classroom" style="position:absolute;left:25%;top:80%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:clamp(4px,0.7vw,8px);padding:6px;background:none;border:0;cursor:pointer">
+            <span class="h1" style="position:relative;width:clamp(32px,6vw,70px);aspect-ratio:1;display:block;filter:drop-shadow(0 4px 14px rgba(0,0,0,0.6))">
               <svg viewBox="0 0 64 64" width="100%" height="100%" aria-hidden="true" style="display:block">
                 <circle cx="32" cy="32" r="28" fill="none" stroke="#ff7a2f" stroke-width="7" stroke-dasharray="5.5 5.5"></circle>
                 <circle cx="32" cy="32" r="24" fill="#0b0e14" stroke="#ff7a2f" stroke-width="1.5"></circle>
@@ -75,8 +75,8 @@
             <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#f5f3ef;background:rgba(7,9,13,0.82);padding:4px 10px;white-space:nowrap">Classroom</span>
           </button>
         
-          <button type="button" class="d-only" data-open="2" aria-haspopup="dialog" aria-label="Open Design" style="position:absolute;left:33%;top:30%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:8px;padding:0;background:none;border:0;cursor:pointer">
-            <span class="h1" style="position:relative;width:clamp(52px,4.6vw,70px);aspect-ratio:1;display:block;filter:drop-shadow(0 4px 14px rgba(0,0,0,0.6))">
+          <button type="button" class="gear" data-open="2" aria-haspopup="dialog" aria-label="Open Design" style="position:absolute;left:33%;top:30%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:clamp(4px,0.7vw,8px);padding:6px;background:none;border:0;cursor:pointer">
+            <span class="h1" style="position:relative;width:clamp(32px,6vw,70px);aspect-ratio:1;display:block;filter:drop-shadow(0 4px 14px rgba(0,0,0,0.6))">
               <svg viewBox="0 0 64 64" width="100%" height="100%" aria-hidden="true" style="display:block">
                 <circle cx="32" cy="32" r="28" fill="none" stroke="#ff7a2f" stroke-width="7" stroke-dasharray="5.5 5.5"></circle>
                 <circle cx="32" cy="32" r="24" fill="#0b0e14" stroke="#ff7a2f" stroke-width="1.5"></circle>
@@ -88,8 +88,8 @@
             <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#f5f3ef;background:rgba(7,9,13,0.82);padding:4px 10px;white-space:nowrap">Design</span>
           </button>
         
-          <button type="button" class="d-only" data-open="3" aria-haspopup="dialog" aria-label="Open Makers" style="position:absolute;left:46%;top:74%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:8px;padding:0;background:none;border:0;cursor:pointer">
-            <span class="h1" style="position:relative;width:clamp(52px,4.6vw,70px);aspect-ratio:1;display:block;filter:drop-shadow(0 4px 14px rgba(0,0,0,0.6))">
+          <button type="button" class="gear" data-open="3" aria-haspopup="dialog" aria-label="Open Makers" style="position:absolute;left:46%;top:74%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:clamp(4px,0.7vw,8px);padding:6px;background:none;border:0;cursor:pointer">
+            <span class="h1" style="position:relative;width:clamp(32px,6vw,70px);aspect-ratio:1;display:block;filter:drop-shadow(0 4px 14px rgba(0,0,0,0.6))">
               <svg viewBox="0 0 64 64" width="100%" height="100%" aria-hidden="true" style="display:block">
                 <circle cx="32" cy="32" r="28" fill="none" stroke="#ff7a2f" stroke-width="7" stroke-dasharray="5.5 5.5"></circle>
                 <circle cx="32" cy="32" r="24" fill="#0b0e14" stroke="#ff7a2f" stroke-width="1.5"></circle>
@@ -101,8 +101,8 @@
             <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#f5f3ef;background:rgba(7,9,13,0.82);padding:4px 10px;white-space:nowrap">Makers</span>
           </button>
         
-          <button type="button" class="d-only" data-open="4" aria-haspopup="dialog" aria-label="Open Industry" style="position:absolute;left:87%;top:26%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:8px;padding:0;background:none;border:0;cursor:pointer">
-            <span class="h1" style="position:relative;width:clamp(52px,4.6vw,70px);aspect-ratio:1;display:block;filter:drop-shadow(0 4px 14px rgba(0,0,0,0.6))">
+          <button type="button" class="gear" data-open="4" aria-haspopup="dialog" aria-label="Open Industry" style="position:absolute;left:87%;top:26%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:clamp(4px,0.7vw,8px);padding:6px;background:none;border:0;cursor:pointer">
+            <span class="h1" style="position:relative;width:clamp(32px,6vw,70px);aspect-ratio:1;display:block;filter:drop-shadow(0 4px 14px rgba(0,0,0,0.6))">
               <svg viewBox="0 0 64 64" width="100%" height="100%" aria-hidden="true" style="display:block">
                 <circle cx="32" cy="32" r="28" fill="none" stroke="#ff7a2f" stroke-width="7" stroke-dasharray="5.5 5.5"></circle>
                 <circle cx="32" cy="32" r="24" fill="#0b0e14" stroke="#ff7a2f" stroke-width="1.5"></circle>
@@ -114,8 +114,8 @@
             <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#f5f3ef;background:rgba(7,9,13,0.82);padding:4px 10px;white-space:nowrap">Industry</span>
           </button>
         
-          <button type="button" class="d-only" data-open="5" aria-haspopup="dialog" aria-label="Open Learning" style="position:absolute;left:92%;top:66%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:8px;padding:0;background:none;border:0;cursor:pointer">
-            <span class="h1" style="position:relative;width:clamp(52px,4.6vw,70px);aspect-ratio:1;display:block;filter:drop-shadow(0 4px 14px rgba(0,0,0,0.6))">
+          <button type="button" class="gear" data-open="5" aria-haspopup="dialog" aria-label="Open Learning" style="position:absolute;left:92%;top:66%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:clamp(4px,0.7vw,8px);padding:6px;background:none;border:0;cursor:pointer">
+            <span class="h1" style="position:relative;width:clamp(32px,6vw,70px);aspect-ratio:1;display:block;filter:drop-shadow(0 4px 14px rgba(0,0,0,0.6))">
               <svg viewBox="0 0 64 64" width="100%" height="100%" aria-hidden="true" style="display:block">
                 <circle cx="32" cy="32" r="28" fill="none" stroke="#ff7a2f" stroke-width="7" stroke-dasharray="5.5 5.5"></circle>
                 <circle cx="32" cy="32" r="24" fill="#0b0e14" stroke="#ff7a2f" stroke-width="1.5"></circle>
@@ -127,68 +127,6 @@
             <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#f5f3ef;background:rgba(7,9,13,0.82);padding:4px 10px;white-space:nowrap">Learning</span>
           </button>
     </div>
-
-    <div class="m-only" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px 10px;padding:8px 20px 20px">
-        <button type="button" data-open="0" aria-haspopup="dialog" aria-label="Open Lab" style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:6px 0;background:none;border:0;cursor:pointer;min-height:44px">
-            <svg viewBox="0 0 64 64" width="56" height="56" aria-hidden="true" style="display:block">
-              <circle cx="32" cy="32" r="28" fill="none" stroke="#ff7a2f" stroke-width="7" stroke-dasharray="5.5 5.5"></circle>
-              <circle cx="32" cy="32" r="24" fill="#0b0e14" stroke="#ff7a2f" stroke-width="1.5"></circle>
-              <line x1="32" y1="14" x2="32" y2="22" stroke="#ff7a2f" stroke-width="2" stroke-linecap="round"></line>
-              <circle cx="32" cy="32" r="3" fill="#ff7a2f"></circle>
-            </svg>
-            <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#f5f3ef">Lab</span>
-          </button>
-        
-          <button type="button" data-open="1" aria-haspopup="dialog" aria-label="Open Classroom" style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:6px 0;background:none;border:0;cursor:pointer;min-height:44px">
-            <svg viewBox="0 0 64 64" width="56" height="56" aria-hidden="true" style="display:block">
-              <circle cx="32" cy="32" r="28" fill="none" stroke="#ff7a2f" stroke-width="7" stroke-dasharray="5.5 5.5"></circle>
-              <circle cx="32" cy="32" r="24" fill="#0b0e14" stroke="#ff7a2f" stroke-width="1.5"></circle>
-              <line x1="32" y1="14" x2="32" y2="22" stroke="#ff7a2f" stroke-width="2" stroke-linecap="round"></line>
-              <circle cx="32" cy="32" r="3" fill="#ff7a2f"></circle>
-            </svg>
-            <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#f5f3ef">Classroom</span>
-          </button>
-        
-          <button type="button" data-open="2" aria-haspopup="dialog" aria-label="Open Design" style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:6px 0;background:none;border:0;cursor:pointer;min-height:44px">
-            <svg viewBox="0 0 64 64" width="56" height="56" aria-hidden="true" style="display:block">
-              <circle cx="32" cy="32" r="28" fill="none" stroke="#ff7a2f" stroke-width="7" stroke-dasharray="5.5 5.5"></circle>
-              <circle cx="32" cy="32" r="24" fill="#0b0e14" stroke="#ff7a2f" stroke-width="1.5"></circle>
-              <line x1="32" y1="14" x2="32" y2="22" stroke="#ff7a2f" stroke-width="2" stroke-linecap="round"></line>
-              <circle cx="32" cy="32" r="3" fill="#ff7a2f"></circle>
-            </svg>
-            <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#f5f3ef">Design</span>
-          </button>
-        
-          <button type="button" data-open="3" aria-haspopup="dialog" aria-label="Open Makers" style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:6px 0;background:none;border:0;cursor:pointer;min-height:44px">
-            <svg viewBox="0 0 64 64" width="56" height="56" aria-hidden="true" style="display:block">
-              <circle cx="32" cy="32" r="28" fill="none" stroke="#ff7a2f" stroke-width="7" stroke-dasharray="5.5 5.5"></circle>
-              <circle cx="32" cy="32" r="24" fill="#0b0e14" stroke="#ff7a2f" stroke-width="1.5"></circle>
-              <line x1="32" y1="14" x2="32" y2="22" stroke="#ff7a2f" stroke-width="2" stroke-linecap="round"></line>
-              <circle cx="32" cy="32" r="3" fill="#ff7a2f"></circle>
-            </svg>
-            <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#f5f3ef">Makers</span>
-          </button>
-        
-          <button type="button" data-open="4" aria-haspopup="dialog" aria-label="Open Industry" style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:6px 0;background:none;border:0;cursor:pointer;min-height:44px">
-            <svg viewBox="0 0 64 64" width="56" height="56" aria-hidden="true" style="display:block">
-              <circle cx="32" cy="32" r="28" fill="none" stroke="#ff7a2f" stroke-width="7" stroke-dasharray="5.5 5.5"></circle>
-              <circle cx="32" cy="32" r="24" fill="#0b0e14" stroke="#ff7a2f" stroke-width="1.5"></circle>
-              <line x1="32" y1="14" x2="32" y2="22" stroke="#ff7a2f" stroke-width="2" stroke-linecap="round"></line>
-              <circle cx="32" cy="32" r="3" fill="#ff7a2f"></circle>
-            </svg>
-            <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#f5f3ef">Industry</span>
-          </button>
-        
-          <button type="button" data-open="5" aria-haspopup="dialog" aria-label="Open Learning" style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:6px 0;background:none;border:0;cursor:pointer;min-height:44px">
-            <svg viewBox="0 0 64 64" width="56" height="56" aria-hidden="true" style="display:block">
-              <circle cx="32" cy="32" r="28" fill="none" stroke="#ff7a2f" stroke-width="7" stroke-dasharray="5.5 5.5"></circle>
-              <circle cx="32" cy="32" r="24" fill="#0b0e14" stroke="#ff7a2f" stroke-width="1.5"></circle>
-              <line x1="32" y1="14" x2="32" y2="22" stroke="#ff7a2f" stroke-width="2" stroke-linecap="round"></line>
-              <circle cx="32" cy="32" r="3" fill="#ff7a2f"></circle>
-            </svg>
-            <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#f5f3ef">Learning</span>
-          </button>
-      </div>
   </section>
 
   <section data-screen-label="Where it's taking me" style="border-top:1px dashed #2f3743;margin-top:clamp(40px,6vh,72px)">
